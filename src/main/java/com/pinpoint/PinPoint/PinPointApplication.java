@@ -26,40 +26,5 @@ public class PinPointApplication {
 			System.out.println("running command line runner");
 		};
 	}
-	@Async
-	public void processData(String data) throws ExecutionException, InterruptedException {
-//		CompletableFuture<?> resp = fetchData();
-//		System.out.println(resp.get());
-	}
-
-	@Async
-	public CompletableFuture<?> fetchData() {
-		// Perform some asynchronous operation
-
-		// this performs the thread just put wrapper around the thread execution so that you will get the more options over thread execution
-		CompletableFuture<String> helloFuture = CompletableFuture.supplyAsync(() -> {
-			try{
-				Thread.sleep(5000);
-				return "hello";
-			}catch (InterruptedException e){
-				e.printStackTrace();
-				return "error occured";
-			}
-		});
-
-		CompletableFuture<String> greetingFuture = CompletableFuture.supplyAsync(() -> {
-			try{
-				Thread.sleep(5000);
-				return "world";
-			}catch (InterruptedException e){
-				e.printStackTrace();
-				return "error occured";
-			}
-		});
-
-//		return CompletableFuture.completedFuture("data");
-//		CompletableFuture<Void> allFutuers = CompletableFuture.allOf(helloFuture, greetingFuture);
-		return helloFuture;
-	}
 
 }
