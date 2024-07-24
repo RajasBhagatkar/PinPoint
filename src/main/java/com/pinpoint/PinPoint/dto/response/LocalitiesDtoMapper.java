@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class LocalitiesDtoMapper implements Mapper<LocalityInfoEntity, LocalitiesDto> {
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public LocalitiesDto mapTo(LocalityInfoEntity localityInfoEntity) {

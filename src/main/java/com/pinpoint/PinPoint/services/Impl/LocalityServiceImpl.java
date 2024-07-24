@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -20,6 +19,7 @@ public class LocalityServiceImpl implements PincodeService {
     private final LocalityInfoRepository localityRepository;
 
     private final Mapper<LocalityInfoEntity, LocalitiesDto>  localityDtoMapper;
+    Logger logger = LoggerFactory.getLogger(LocalityServiceImpl.class);
 
 
     @Override
@@ -38,7 +38,7 @@ public class LocalityServiceImpl implements PincodeService {
         return result;
     }
 
-    Logger logger = LoggerFactory.getLogger(LocalityServiceImpl.class);
+
 
     public String testService() {
         return "Working....";
