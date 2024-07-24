@@ -1,0 +1,19 @@
+name: Build Check
+on : [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Use Java
+      uses: actions/setup-java@v4.2.1
+
+    - name: Install Maven dependencies
+      uses: guoshiqiufeng/github-action-sync-maven@v1.2.2
+
+    - name: Run Build
+      run: mvnw clean install
