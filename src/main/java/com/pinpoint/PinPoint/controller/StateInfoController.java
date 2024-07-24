@@ -19,16 +19,15 @@ public class StateInfoController {
     private final StateService stateService;
 
     /**
-     *
      * @param pincode
      * @return Info about that pincode {
-     *    id: String
-     *    state: String,
-     *    division: String,
-     *    circleName: String,
-     *    regionName: String,
-     *    district: String
-     *    pincode: Integer
+     * id: String
+     * state: String,
+     * division: String,
+     * circleName: String,
+     * regionName: String,
+     * district: String
+     * pincode: Integer
      * }[]
      */
     @GetMapping("/{pincode}/info")
@@ -37,21 +36,22 @@ public class StateInfoController {
     }
 
     /**
-     *
      * @param state_name
      * @return List Of all Districts In This State
-     *  [district1, district2,district3,.....]
+     * [district1, district2,district3,.....]
      */
     @GetMapping("/district/{state_name}")
-    private ResponseEntity getAllDistrictOfThisState(@PathVariable String state_name){
+    private ResponseEntity getAllDistrictOfThisState(@PathVariable String state_name) {
         return new ResponseEntity(stateService.getAllDistrictByStateName(state_name), HttpStatus.OK);
     }
 
+    /**
+     * @return [state1, state2, state3,.....]
+     */
     @GetMapping("/")
-    private ResponseEntity getAllStatesOfIndia(){
+    private ResponseEntity getAllStatesOfIndia() {
         return new ResponseEntity(stateService.getAllStatesOfIndia(), HttpStatus.OK);
     }
-
 
 
 }

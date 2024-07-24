@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PincodeService {
     List<LocalitiesDto> getLocalitiesFromPincode(Integer pincode);
+
+    boolean verifyPincodeExists(Integer pincode);
 }
