@@ -1,8 +1,9 @@
 name: Build Check
-on : [pull_request]
+on: [pull_request]
 
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -14,11 +15,7 @@ jobs:
       with:
         java-version: '19'
         distribution: 'oracle'
-        cache-dependency-path: '**/pom.xml'
         cache: 'maven'
-
-    # - name: Install Maven dependencies
-    #   uses: guoshiqiufeng/github-action-sync-maven@v1.2.2
 
     - name: Run Build
       run: mvn clean package
