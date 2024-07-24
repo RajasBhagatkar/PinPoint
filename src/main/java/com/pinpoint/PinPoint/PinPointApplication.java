@@ -1,41 +1,27 @@
 package com.pinpoint.PinPoint;
 
-import com.pinpoint.PinPoint.entity.Locality;
 import com.pinpoint.PinPoint.services.PincodeService;
-import lombok.Synchronized;
 import lombok.extern.java.Log;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
-
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
 
 @SpringBootApplication
 @EnableAsync
 @Log
 public class PinPointApplication {
-    final private PincodeService pincodeService;
-    int start = 1;
 
-    public PinPointApplication(PincodeService pincodeService) {
-        this.pincodeService = pincodeService;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(PinPointApplication.class, args);
         System.out.println("Application Running......");
     }
 
-    @Bean
+//    @Bean
 //    @Synchronized
-    public CommandLineRunner commandLineRunner() throws Exception {
+//    public CommandLineRunner commandLineRunner() throws Exception {
 //        long start_time = System.currentTimeMillis();
 //        Integer totalRows = pincodeService.getTotalRows() - start;
 //
@@ -68,8 +54,8 @@ public class PinPointApplication {
 //
 //        log.info("complete task of interating 40k rows took - " + totalT + " /ms");
 //
-        return args -> {
-        };
-    }
+//        return args -> {
+//        };
+//}
 
 }
