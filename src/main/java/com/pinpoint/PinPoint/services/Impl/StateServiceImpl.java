@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,11 +23,31 @@ public class StateServiceImpl implements StateService {
 
     @Override
     public List<String> getAllDistrictByStateName(String stateName) {
-        if(stateName == null){
+        if (stateName == null) {
 //            throw ExceptionDataNotFound("message", "state name "+stateName+" does not exists, check name again");
             return null;
         }
         stateName = stateName.trim();
         return stateInfoRepository.findDistinctDistrictByState(stateName).orElse(null);
+    }
+
+    @Override
+    public String getDistrictOfPincode(Integer pincode) {
+        StateInfoEntity result = stateInfoRepository.findByPincode(pincode).orElse(null);
+        if (result == null) {
+//             throw DataNotFoundError
+            return null;
+        }
+        return result.getDistrict();
+    }
+
+    @Override
+    public String getStateOfPincode(Integer pincode) {
+        StateInfoEntity result = stateInfoRepository.findByPincode(pincode).orElse(null);
+        if (result == null) {
+            // throw DataNotFundError
+            return null;
+        }
+        return result.getState();
     }
 }
