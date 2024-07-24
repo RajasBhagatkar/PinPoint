@@ -12,4 +12,6 @@ public interface StateService {
     String getDistrictOfPincode(Integer pincode);
 
     String getStateOfPincode(Integer pincode);
+
+    List<String> getAllStatesOfIndia();
 }
