@@ -20,4 +20,4 @@ jobs:
       uses: guoshiqiufeng/github-action-sync-maven@v1.2.2
 
     - name: Run Build
-      run: mvn clean install
+      run: mvn clean package
