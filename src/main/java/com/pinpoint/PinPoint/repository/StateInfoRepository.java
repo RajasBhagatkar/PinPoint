@@ -14,4 +14,7 @@ public interface StateInfoRepository extends JpaRepository<StateInfoEntity, Stri
     Optional<StateInfoEntity> findByPincode(Integer pincode);
     @Query("SELECT DISTINCT si.district FROM StateInfoEntity si WHERE si.state = :state ORDER BY district ASC")
     Optional<List<String>> findDistinctDistrictByState(String state);
+
+    @Query("SELECT DISTINCT si.state FROM StateInfoEntity si ORDER BY state ASC")
+    List<String> findDistinctState();
 }

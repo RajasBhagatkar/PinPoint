@@ -1,8 +1,9 @@
 name: Build Check
-on : [pull_request]
+on: [pull_request]
 
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -11,9 +12,10 @@ jobs:
 
     - name: Use Java
       uses: actions/setup-java@v4.2.1
-
-    - name: Install Maven dependencies
-      uses: guoshiqiufeng/github-action-sync-maven@v1.2.2
+      with:
+        java-version: '19'
+        distribution: 'oracle'
+        cache: 'maven'
 
     - name: Run Build
-      run: mvnw clean install
+      run: mvn clean package

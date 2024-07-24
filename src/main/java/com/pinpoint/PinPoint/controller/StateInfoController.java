@@ -47,6 +47,11 @@ public class StateInfoController {
         return new ResponseEntity(stateService.getAllDistrictByStateName(state_name), HttpStatus.OK);
     }
 
+    @GetMapping("/")
+    private ResponseEntity getAllStatesOfIndia(){
+        return new ResponseEntity(stateService.getAllStatesOfIndia(), HttpStatus.OK);
+    }
+
 
 
 }

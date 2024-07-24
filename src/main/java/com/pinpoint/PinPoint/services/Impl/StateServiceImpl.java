@@ -50,4 +50,9 @@ public class StateServiceImpl implements StateService {
         }
         return result.getState();
     }
+
+    @Override
+    public List<String> getAllStatesOfIndia() {
+        return stateInfoRepository.findDistinctState();
+    }
 }
