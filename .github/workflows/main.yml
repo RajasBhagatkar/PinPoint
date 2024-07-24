@@ -16,8 +16,8 @@ jobs:
         distribution: 'oracle'
         cache: 'maven'
 
-    # - name: Install Maven dependencies
-    #   uses: guoshiqiufeng/github-action-sync-maven@v1.2.2
+    - name: Install Maven dependencies
+      uses: guoshiqiufeng/github-action-sync-maven@v1.2.2
 
     - name: Run Build
       run: mvn clean package
