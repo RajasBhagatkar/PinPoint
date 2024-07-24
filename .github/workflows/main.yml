@@ -12,7 +12,9 @@ jobs:
     - name: Use Java
       uses: actions/setup-java@v4.2.1
       with:
+        java-version: '19'
         distribution: jdk
+        cache: 'maven'
 
     - name: Install Maven dependencies
       uses: guoshiqiufeng/github-action-sync-maven@v1.2.2
