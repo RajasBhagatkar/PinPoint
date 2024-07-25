@@ -25,8 +25,9 @@ public class LocalityServiceImpl implements PincodeService {
     @Override
     public List<LocalitiesDto> getLocalitiesFromPincode(Integer pincode) {
         List<LocalityInfoEntity> allLocalities = localityRepository.findByPincode(pincode).orElse(null);
-        if (allLocalities == null) {
+        if (allLocalities.size() < 1) {
             // throw Exception Data Not found
+            return null;
         }
 
         List<LocalitiesDto> result = new ArrayList<>();
@@ -38,6 +39,11 @@ public class LocalityServiceImpl implements PincodeService {
         return result;
     }
 
+    @Override
+    public boolean verifyPincodeExists(Integer pincode) {
+//        return localityRepository.findByPincode(pincode).orElse(null) != null ? true : false;
+        return localityRepository.findByPincode(pincode).orElse(null).size() > 0 ? true : false;
+    }
 
 
     public String testService() {
