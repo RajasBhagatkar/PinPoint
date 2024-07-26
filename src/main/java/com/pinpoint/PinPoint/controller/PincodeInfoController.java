@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pinpoint.PinPoint.dto.response.LocalitiesDto;
+import com.pinpoint.PinPoint.entity.StateInfoEntity;
 import com.pinpoint.PinPoint.services.PincodeService;
 import com.pinpoint.PinPoint.services.StateService;
 import lombok.AllArgsConstructor;
@@ -47,7 +48,7 @@ public class PincodeInfoController {
         List<LocalitiesDto> result = pincodeService.getLocalitiesFromPincode(pincode);
         if (result == null) {
             Object response = new Object() {
-                String message = "Invalid pin code kindly check your pincode and try again";
+                String message = "Invalid pincode kindly check your pincode and try again";
             };
             JsonNode jsonResponse = mapper.valueToTree(response);
             return new ResponseEntity(jsonResponse, HttpStatus.NOT_FOUND);
@@ -115,7 +116,15 @@ public class PincodeInfoController {
      */
     @GetMapping("/{pincode}/info")
     private ResponseEntity getInfoAboutPincode(@PathVariable Integer pincode) {
-        return new ResponseEntity(stateService.getStateInfoByPincode(pincode), HttpStatus.OK);
+        StateInfoEntity result = stateService.getStateInfoByPincode(pincode);
+        if(result == null){
+            Object response = new Object() {
+                String message = "Invalid pincode kindly check your pincode and try again";
+            };
+            JsonNode jsonResponse = mapper.valueToTree(response);
+            return new ResponseEntity(jsonResponse, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(result, HttpStatus.OK);
     }
 
 }
