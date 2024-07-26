@@ -42,7 +42,7 @@ public class StateInfoController {
      */
     @GetMapping("/district/{state_name}")
     private ResponseEntity getAllDistrictOfThisState(@PathVariable String state_name) {
-        return new ResponseEntity(stateService.getAllDistrictByStateName(state_name), HttpStatus.OK);
+        return new ResponseEntity(stateService.getAllDistrictByStateName(state_name.toUpperCase()), HttpStatus.OK);
     }
 
     /**
