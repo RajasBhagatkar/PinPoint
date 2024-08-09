@@ -18,6 +18,6 @@ public class testController {
 
     @GetMapping("/insertData")
     private ResponseEntity<?> insertDB() {
-        return new ResponseEntity<>("Ok", HttpStatus.OK);
+        return new ResponseEntity<>("Ok V3", HttpStatus.OK);
     }
 }
